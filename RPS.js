@@ -25,30 +25,32 @@ let playerSelection = () => {
 let playRound = (computerSelection, selection) => {
     if (computerSelection === 'paper' && selection === 'rock') {
         cpuScore++
-        alert `You choose '${selection}', the CPU choose ${computerSelection}, you LOSE!`;
+        alert `You choose rock, the CPU choose paper, you LOSE!`;
         return 2;
     } else if (computerSelection === 'rock' && selection === 'scissors') {
-        alert `You choose ${selection}, the CPU choose ${computerSelection}, you LOSE!`;
+        alert `You choose scissors, the CPU choose rock, you LOSE!`;
         return 2;
     } else if (computerSelection === 'scissors' && selection === 'paper') {
-        alert `You choose ${selection}, the CPU choose ${computerSelection}, you LOSE!`;
+        alert `You choose paper, the CPU choose scissors, you LOSE!`;
         return 2;
     } else if (selection === 'paper' && computerSelection === 'rock') {
-        alert `You choose ${selection}, the CPU choose ${computerSelection}, you WIN!`;
+        alert `You choose rock, the CPU choose paper, you WIN!`;
         return 1;
     } else if (selection === 'rock' && computerSelection === 'scissors') {
-        alert `You choose ${selection}, the CPU choose ${computerSelection}, you WIN!`;
+        alert `You choose rock, the CPU choose scissors, you WIN!`;
         return 1;
     } else if (selection === 'scissors' && computerSelection === 'paper') {
-        alert `You choose ${selection}, the CPU choose ${computerSelection}, you WIN!`;
+        alert `You choose scissors, the CPU choose paper, you WIN!`;
         return 1;
     } else if (selection === computerSelection) {
-        alert `You both chose ${selection}, TIE!`
-    } else {
-        alert 'Invalid input, please enter the correct choice.';
+        alert `You both chose the same thing, TIE!`;
         return 0;
+    } else {
+        alert ("Invalid response, please enter again.");
+        return 0;
+
     }
-}
+};
 
 let updateScores = (result, points) => {
     if (result === 1) {
@@ -66,14 +68,22 @@ let updateScores = (result, points) => {
 
 
 let game = (numofRounds) => {
-    let playa = playerSelection();
-    let puter = computerPlay()
-    let result = playRound(puter, playa);
-    
+    welcomeMessage();
+    do {
+        let playa = playerSelection();
+        let puter = computerPlay()
+        let result = playRound(puter, playa);
+        updateScores(result, 5);
+        if (result != 0){
+            numofRounds--;  
+        }
+    } while(numofRounds > 0);
 
-
-
-
+    if (playScore > cpuScore){
+        alert `You scored ${playScore} and the CPU scored ${cpuScore}, you win boiiii!!!!`
+    } else {
+        alert `The CPU scored ${cpuScore} and you scored ${playScore}, you lose MF.`
+    }
 }
 
-console.log(game());
+game(5);
