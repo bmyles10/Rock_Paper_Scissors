@@ -77,7 +77,7 @@ let game = (numofRounds) => {
         let playa = playerSelection();
         let puter = computerPlay()
         let result = playRound(puter, playa);
-        updateScores(result, 5);
+        updateScores(result, 1);
         if (result != 0) {
             numofRounds--;
         }
