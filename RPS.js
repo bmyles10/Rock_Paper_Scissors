@@ -2,7 +2,8 @@ let cpuScore = 0;
 let playScore = 0;
 
 let welcomeMessage = () => {
-    alert `Welcome to my game of Rock Paper Scissors! Please click ok to begain and make your choice!`
+    alert `Welcome to my game of Rock Paper Scissors!`;
+    alert `Please enter either: Rock, Paper, or Scissors`;
 }
 
 let computerPlay = () => {
@@ -24,25 +25,25 @@ let playerSelection = () => {
 
 let playRound = (computerSelection, selection) => {
     if (computerSelection === 'paper' && selection === 'rock') {
-        alert ("You choose rock, the CPU choose paper, you LOSE! Score is: You " + playScore + " CPU " + cpuScore);
+        alert ("You choose rock, the CPU choose paper, you LOSE!");
         return 2;
     } else if (computerSelection === 'rock' && selection === 'scissors') {
-        alert ("You choose scissors, the CPU choose rock, you LOSE! Score is: You " + playScore + " CPU " + cpuScore);
+        alert ("You choose scissors, the CPU choose rock, you LOSE!");
         return 2;
     } else if (computerSelection === 'scissors' && selection === 'paper') {
-        alert("You choose paper, the CPU choose scissors, you LOSE! Score is: You " + playScore + " CPU " + cpuScore);
+        alert("You choose paper, the CPU choose scissors, you LOSE!");
         return 2;
     } else if (selection === 'paper' && computerSelection === 'rock') {
-        alert ("You choose rock, the CPU choose paper, you WIN! Score is: You " + playScore + " CPU " + cpuScore);
+        alert ("You choose rock, the CPU choose paper, you WIN!");
         return 1;
     } else if (selection === 'rock' && computerSelection === 'scissors') {
-        alert ("You choose rock, the CPU choose scissors, you WIN! Score is: You " + playScore + " CPU " + cpuScore);
+        alert ("You choose rock, the CPU choose scissors, you WIN!");
         return 1;
     } else if (selection === 'scissors' && computerSelection === 'paper') {
-        alert ("You choose scissors, the CPU choose paper, you WIN! Score is: You " + playScore + " CPU " + cpuScore);
+        alert ("You choose scissors, the CPU choose paper, you WIN!");
         return 1;
     } else if (selection === computerSelection) {
-        alert("TIE! Score is: You " + playScore + " CPU " + cpuScore);
+        alert("TIE! You both chose the same thing. Play again.");
         return 0;
     } else {
         alert("Invalid response, please enter again.");
@@ -54,13 +55,16 @@ let playRound = (computerSelection, selection) => {
 let updateScores = (result, points) => {
     if (result === 1) {
         playScore += points;
+        confirm("The score is You: " + playScore + " CPU: " + cpuScore);
     }
     if (result === 2) {
         cpuScore += points;
+        confirm("The score is You: " + playScore + " CPU: " + cpuScore);
     }
     if (result === 0) {
         cpuScore += 0;
         playScore += 0;
+        confirm("The score is You: " + playScore + " CPU: " + cpuScore);
     }
 }
 
